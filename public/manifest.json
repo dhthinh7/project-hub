@@ -1,0 +1,16 @@
+{
+  "name": "ProjectHub - Manage Your Development Projects",
+  "short_name": "ProjectHub",
+  "description": "Quickly access, manage, and open your development projects in VSCode, Cursor, or Terminal. All data stored locally on your computer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/icon",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
