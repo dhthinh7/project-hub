@@ -6,26 +6,26 @@ import { join } from "path";
 export async function GET() {
   try {
     // First, try to serve the executable directly
-    const exePath = join(process.cwd(), "public", "local-server.exe");
+    const exePath = join(process.cwd(), "public", "project-hub-project-hub-local-server.exe");
     if (existsSync(exePath)) {
       const exeBuffer = readFileSync(exePath);
       return new NextResponse(exeBuffer, {
         headers: {
           "Content-Type": "application/x-msdownload",
-          "Content-Disposition": "attachment; filename=local-server.exe",
+          "Content-Disposition": "attachment; filename=project-hub-project-hub-local-server.exe",
           "Content-Length": exeBuffer.length.toString(),
         },
       });
     }
 
     // Fallback: try to serve the zip file (contains executable + README)
-    const zipPath = join(process.cwd(), "public", "local-server.zip");
+    const zipPath = join(process.cwd(), "public", "project-hub-project-hub-local-server.zip");
     if (existsSync(zipPath)) {
       const zipBuffer = readFileSync(zipPath);
       return new NextResponse(zipBuffer, {
         headers: {
           "Content-Type": "application/zip",
-          "Content-Disposition": "attachment; filename=local-server.zip",
+          "Content-Disposition": "attachment; filename=project-hub-project-hub-local-server.zip",
           "Content-Length": zipBuffer.length.toString(),
         },
       });
@@ -33,7 +33,7 @@ export async function GET() {
 
     // If neither exists, return instructions
     const fallbackPackage = {
-      name: "project-manager-local-server",
+      name: "project-manager-project-hub-project-hub-local-server",
       version: "1.0.0",
       description: "Local server for Project Manager",
       instructions: {
@@ -46,7 +46,7 @@ export async function GET() {
     return NextResponse.json(fallbackPackage, {
       headers: {
         "Content-Type": "application/json",
-        "Content-Disposition": "attachment; filename=local-server-instructions.json",
+        "Content-Disposition": "attachment; filename=project-hub-project-hub-local-server-instructions.json",
       },
     });
   } catch (error) {

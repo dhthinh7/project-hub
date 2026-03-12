@@ -25,10 +25,14 @@ export function ServerStatusCard({
 }: ServerStatusCardProps) {
   if (localServerConnected === false) {
     return (
-      <Card className={`mb-6 ${versionMismatch ? 'border-red-500/50 bg-red-500/10' : 'border-yellow-500/50 bg-yellow-500/10'}`}>
+      <Card
+        className={`mb-6 ${
+          versionMismatch ? "border-red-500/50 bg-red-500/10" : "border-yellow-500/50 bg-yellow-500/10"
+        }`}
+      >
         <CardHeader>
           <div className="flex items-center gap-2">
-            <AlertCircle className={`h-5 w-5 ${versionMismatch ? 'text-red-500' : 'text-yellow-500'}`} />
+            <AlertCircle className={`h-5 w-5 ${versionMismatch ? "text-red-500" : "text-yellow-500"}`} />
             <CardTitle className="text-lg">
               {versionMismatch ? "Local Server Version Mismatch" : "Local Server Not Connected"}
             </CardTitle>
@@ -44,7 +48,8 @@ export function ServerStatusCard({
             <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-md text-sm">
               <p className="font-semibold mb-1 text-red-600 dark:text-red-400">⚠️ Action Required:</p>
               <p className="text-muted-foreground">
-                The local server is running but has an incompatible version. All operations are disabled until you update to the latest version.
+                The local server is running but has an incompatible version. All operations are disabled until you
+                update to the latest version.
               </p>
             </div>
           )}
@@ -53,7 +58,7 @@ export function ServerStatusCard({
             <ol className="list-decimal list-inside space-y-1 text-muted-foreground ml-2">
               <li>Click the button below to download the local server executable</li>
               <li>
-                Double-click <code className="bg-muted px-1 py-0.5 rounded">local-server.exe</code> to run
+                Double-click <code className="bg-muted px-1 py-0.5 rounded">project-hub-project-hub-local-server.exe</code> to run
               </li>
               <li>
                 The server will start automatically on{" "}
@@ -63,13 +68,7 @@ export function ServerStatusCard({
             </ol>
           </div>
           <div className="flex gap-2">
-            <Button
-              variant="default"
-              size="sm"
-              onClick={onDownloadServer}
-              disabled={downloading}
-              className="flex-1"
-            >
+            <Button variant="default" size="sm" onClick={onDownloadServer} disabled={downloading} className="flex-1">
               <Download className="mr-2 h-4 w-4" />
               {downloading ? "Downloading..." : "Download Local Server"}
             </Button>

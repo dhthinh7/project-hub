@@ -1,11 +1,11 @@
-// Script to build local-server package for distribution
+// Script to build project-hub-local-server package for distribution
 const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
-const localServerDir = path.join(__dirname, "..", "local-server");
-const outputDir = path.join(__dirname, "..", "public", "local-server-package");
-const packageName = "project-manager-local-server";
+const localServerDir = path.join(__dirname, "..", "project-hub-local-server");
+const outputDir = path.join(__dirname, "..", "public", "project-hub-local-server-package");
+const packageName = "project-manager-project-hub-local-server";
 
 // Files to include in package
 const filesToInclude = [
@@ -18,7 +18,7 @@ const filesToInclude = [
   "README.md",
 ];
 
-console.log("Building local-server package...");
+console.log("Building project-hub-local-server package...");
 
 // Create output directory
 if (fs.existsSync(outputDir)) {

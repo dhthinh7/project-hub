@@ -10,14 +10,14 @@ export async function downloadAndSetupServer(): Promise<boolean> {
 
     // Check content type
     const contentType = response.headers.get("content-type");
-    
+
     if (contentType?.includes("application/x-msdownload") || contentType?.includes("application/octet-stream")) {
       // Download as exe file
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "local-server.exe";
+      a.download = "project-hub-project-hub-local-server.exe";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -26,11 +26,11 @@ export async function downloadAndSetupServer(): Promise<boolean> {
       // Show instructions for executable
       alert(
         `Local Server Downloaded!\n\n` +
-        `Next steps:\n` +
-        `1. Double-click local-server.exe to run\n` +
-        `2. The server will start automatically on http://localhost:1234\n` +
-        `3. Keep the window open while using the app\n\n` +
-        `Note: This is a standalone executable - no Node.js installation required!`
+          `Next steps:\n` +
+          `1. Double-click project-hub-project-hub-local-server.exe to run\n` +
+          `2. The server will start automatically on http://localhost:1234\n` +
+          `3. Keep the window open while using the app\n\n` +
+          `Note: This is a standalone executable - no Node.js installation required!`
       );
     } else if (contentType?.includes("application/zip")) {
       // Fallback: zip file
@@ -38,7 +38,7 @@ export async function downloadAndSetupServer(): Promise<boolean> {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "local-server.zip";
+      a.download = "project-hub-project-hub-local-server.zip";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -46,11 +46,11 @@ export async function downloadAndSetupServer(): Promise<boolean> {
 
       alert(
         `Local Server Package Downloaded!\n\n` +
-        `Next steps:\n` +
-        `1. Extract the zip file to a folder\n` +
-        `2. Double-click local-server.exe\n` +
-        `3. The server will start automatically on http://localhost:1234\n\n` +
-        `Note: This is a standalone executable - no Node.js installation required!`
+          `Next steps:\n` +
+          `1. Extract the zip file to a folder\n` +
+          `2. Double-click project-hub-project-hub-local-server.exe\n` +
+          `3. The server will start automatically on http://localhost:1234\n\n` +
+          `Note: This is a standalone executable - no Node.js installation required!`
       );
     } else {
       // Fallback: JSON package
@@ -61,7 +61,7 @@ export async function downloadAndSetupServer(): Promise<boolean> {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "local-server-package.json";
+      a.download = "project-hub-project-hub-local-server-package.json";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -69,9 +69,9 @@ export async function downloadAndSetupServer(): Promise<boolean> {
 
       alert(
         `Package downloaded!\n\n` +
-        `Note: This is a fallback package. Please build the executable using:\n` +
-        `npm run build:server-package\n\n` +
-        `Then the download will work properly.`
+          `Note: This is a fallback package. Please build the executable using:\n` +
+          `npm run build:server-package\n\n` +
+          `Then the download will work properly.`
       );
     }
 

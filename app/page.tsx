@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -37,43 +37,7 @@ export default function Home() {
   const [versionMismatch, setVersionMismatch] = useState(false);
   const prevConnectionStatus = useRef<boolean | null>(null);
 
-  useEffect(() => {
-    // Initial server connection check
-    checkServerConnection();
-
-    // Check server connection every 5 seconds
-    const interval = setInterval(() => {
-      checkServerConnection();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    // Only load projects when connection status actually changes
-    // This prevents unnecessary reloads when checking connection periodically
-    if (localServerConnected === true && prevConnectionStatus.current !== true) {
-      // Connection just established - load projects
-      loadProjectsFromStorage();
-    } else if (localServerConnected === false && prevConnectionStatus.current !== false) {
-      // Connection just lost - clear projects
-      setProjects([]);
-      setFilteredProjects([]);
-    }
-    // Update ref to track previous status
-    prevConnectionStatus.current = localServerConnected;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (searchQuery === "") {
-      setFilteredProjects(projects);
-    } else {
-      const filtered = projects.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-      setFilteredProjects(filtered);
-    }
-  }, [searchQuery, projects]);
-
-  async function loadProjectsFromStorage() {
+  const loadProjectsFromStorage = useCallback(async () => {
     if (!localServerConnected) {
       // Only load from local server - no localStorage fallback
       setProjects([]);
@@ -96,7 +60,7 @@ export default function Home() {
     } finally {
       setLoadingProjects(false);
     }
-  }
+  }, [localServerConnected, loadingProjects]);
 
   async function checkServerConnection() {
     setCheckingServer(true);
@@ -261,6 +225,41 @@ export default function Home() {
       setDownloading(false);
     }
   }
+
+  useEffect(() => {
+    // Initial server connection check
+    checkServerConnection();
+
+    // Check server connection every 5 seconds
+    const interval = setInterval(() => {
+      checkServerConnection();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    // Only load projects when connection status actually changes
+    // This prevents unnecessary reloads when checking connection periodically
+    if (localServerConnected === true && prevConnectionStatus.current !== true) {
+      // Connection just established - load projects
+      loadProjectsFromStorage();
+    } else if (localServerConnected === false && prevConnectionStatus.current !== false) {
+      // Connection just lost - clear projects
+      setProjects([]);
+      setFilteredProjects([]);
+    }
+    // Update ref to track previous status
+    prevConnectionStatus.current = localServerConnected;
+  }, [loadProjectsFromStorage, localServerConnected]);
+
+  useEffect(() => {
+    if (searchQuery === "") {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
+      setFilteredProjects(filtered);
+    }
+  }, [searchQuery, projects]);
 
   return (
     <div className="min-h-screen bg-background">

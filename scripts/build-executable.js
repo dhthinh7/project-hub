@@ -1,18 +1,18 @@
-// Script to build local-server as executable using pkg
+// Script to build project-hub-local-server as executable using pkg
 // This creates a standalone .exe file that users can run without Node.js installed
 
 const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
-const localServerDir = path.join(__dirname, "..", "local-server");
+const localServerDir = path.join(__dirname, "..", "project-hub-local-server");
 const outputDir = path.join(__dirname, "..", "public");
 
-console.log("Building local-server executable...");
+console.log("Building project-hub-local-server executable...");
 console.log("This may take a few minutes...\n");
 
 try {
-  // Change to local-server directory
+  // Change to project-hub-local-server directory
   process.chdir(localServerDir);
 
   // Check if pkg is installed
@@ -30,14 +30,14 @@ try {
 
   // Move executable to public folder
   const exePath = path.join(localServerDir, "server.exe");
-  const distExePath = path.join(outputDir, "local-server.exe");
+  const distExePath = path.join(outputDir, "project-hub-local-server.exe");
 
   if (fs.existsSync(exePath)) {
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
     fs.copyFileSync(exePath, distExePath);
-    fs.unlinkSync(exePath); // Remove from local-server directory
+    fs.unlinkSync(exePath); // Remove from project-hub-local-server directory
     console.log(`\n✓ Executable created: ${distExePath}`);
     
     const stats = fs.statSync(distExePath);
@@ -49,7 +49,7 @@ try {
   }
 
   console.log("\n✓ Build complete!");
-  console.log("Users can now download and run local-server.exe directly without Node.js");
+  console.log("Users can now download and run project-hub-local-server.exe directly without Node.js");
 } catch (error) {
   console.error("Build failed:", error.message);
   process.exit(1);

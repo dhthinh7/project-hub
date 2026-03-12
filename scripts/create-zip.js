@@ -1,4 +1,4 @@
-// Script to create a zip file of local-server for distribution
+// Script to create a zip file of project-hub-local-server for distribution
 // This now packages the executable version
 
 const fs = require("fs");
@@ -14,14 +14,14 @@ try {
 }
 
 const publicDir = path.join(__dirname, "..", "public");
-const exeFile = path.join(publicDir, "local-server.exe");
-const outputFile = path.join(publicDir, "local-server.zip");
+const exeFile = path.join(publicDir, "project-hub-local-server.exe");
+const outputFile = path.join(publicDir, "project-hub-local-server.zip");
 
-console.log("Creating local-server package...");
+console.log("Creating project-hub-local-server package...");
 
 // Check if executable exists
 if (!fs.existsSync(exeFile)) {
-  console.error("Error: local-server.exe not found!");
+  console.error("Error: project-hub-local-server.exe not found!");
   console.log("Please run: npm run build:server-exe first");
   process.exit(1);
 }
@@ -59,7 +59,7 @@ archive.on("error", (err) => {
 archive.pipe(output);
 
 // Add the executable and a README
-archive.file(exeFile, { name: "local-server.exe" });
+archive.file(exeFile, { name: "project-hub-local-server.exe" });
 
 // Create a simple README for the package
 const readmeContent = `# Local Server for Project Manager
@@ -67,7 +67,7 @@ const readmeContent = `# Local Server for Project Manager
 ## Quick Start
 
 1. Extract this zip file to a folder
-2. Double-click local-server.exe
+2. Double-click project-hub-local-server.exe
 3. The server will start automatically on http://localhost:1234
 4. Keep this window open while using the web app
 
