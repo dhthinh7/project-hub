@@ -1,5 +1,5 @@
 {
-  "name": "project-manager-project-hub-project-hub-local-server",
+  "name": "project-manager-project-hub-local-server",
   "version": "1.0.0",
   "description": "Local server for opening projects",
   "main": "server.js",

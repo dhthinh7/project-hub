@@ -16,7 +16,7 @@
    npm run build:server-package
    ```
 
-   This creates `public/project-hub-project-hub-local-server.zip` which users will download.
+   This creates `public/project-hub-local-server.zip` which users will download.
 
 2. **Push code to repository**
 
@@ -38,7 +38,7 @@
    - Amplify will auto-detect Next.js
    - Build command: `npm run build`
    - Output directory: `.next`
-   - **Important**: Make sure `public/project-hub-project-hub-local-server.zip` is included in the build
+   - **Important**: Make sure `public/project-hub-local-server.zip` is included in the build
 
 5. **Environment Variables** (if needed)
 
@@ -76,7 +76,7 @@
 
 4. **Keep Server Running**
    - The server must be running for the web app to open projects
-   - Consider setting up auto-start (see `project-hub-project-hub-local-server/README.md`)
+   - Consider setting up auto-start (see `project-hub-local-server/README.md`)
 
 ### Security Note
 
@@ -92,7 +92,7 @@ The local server runs on `localhost:3001` and only accepts connections from the 
 ┌─────────────────┐
 │  AWS Amplify    │  ← Frontend (Next.js)
 │  (Public Web)   │     - Stores data in localStorage
-└────────┬────────┘     - Downloads project-hub-project-hub-local-server.zip
+└────────┬────────┘     - Downloads project-hub-local-server.zip
          │
          │ HTTP Request
          │ (localhost:3001)
@@ -111,7 +111,7 @@ Before deploying, make sure to build the server package:
 npm run build:server-package
 ```
 
-This creates `public/project-hub-project-hub-local-server.zip` containing:
+This creates `public/project-hub-local-server.zip` containing:
 
 - `server.js` - Express server
 - `package.json` - Dependencies
@@ -130,7 +130,7 @@ This creates `public/project-hub-project-hub-local-server.zip` containing:
 
 ### Download Not Working
 
-- Make sure `public/project-hub-project-hub-local-server.zip` exists (run `npm run build:server-package`)
+- Make sure `public/project-hub-local-server.zip` exists (run `npm run build:server-package`)
 - Check that the zip file is included in the build
 - Verify the API endpoint `/api/download-server` is accessible
 

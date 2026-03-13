@@ -14,7 +14,7 @@
    npm run build:server-package
    ```
 
-   This creates `public/project-hub-project-hub-local-server.zip` for users to download.
+   This creates `public/project-hub-local-server.zip` for users to download.
 
 3. **Run development server**
 
@@ -36,7 +36,7 @@
 ### Step 2: Download Local Server
 
 - Click the **"Download & Setup Local Server"** button
-- The `project-hub-project-hub-local-server.zip` file will download automatically
+- The `project-hub-local-server.zip` file will download automatically
 
 ### Step 3: Extract and Run
 

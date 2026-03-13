@@ -58,7 +58,7 @@ export function ServerStatusCard({
             <ol className="list-decimal list-inside space-y-1 text-muted-foreground ml-2">
               <li>Click the button below to download the local server executable</li>
               <li>
-                Double-click <code className="bg-muted px-1 py-0.5 rounded">project-hub-project-hub-local-server.exe</code> to run
+                Double-click <code className="bg-muted px-1 py-0.5 rounded">project-hub-local-server.exe</code> to run
               </li>
               <li>
                 The server will start automatically on{" "}

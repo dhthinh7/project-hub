@@ -54,7 +54,7 @@ Create a Launch Agent:
   <key>ProgramArguments</key>
   <array>
     <string>/usr/local/bin/node</string>
-    <string>/path/to/project-hub-project-hub-local-server/server.js</string>
+    <string>/path/to/project-hub-local-server/server.js</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
@@ -71,5 +71,5 @@ Create a Launch Agent:
 Add to `~/.bashrc` or `~/.zshrc`:
 
 ```bash
-cd /path/to/project-hub-project-hub-local-server && npm start &
+cd /path/to/project-hub-local-server && npm start &
 ```

@@ -54,13 +54,13 @@ The local server is needed to open projects in VSCode, Cursor, or Terminal, and 
 **Option 1: Download Executable (Recommended)**
 
 1. Click "Download Local Server" button in the web app
-2. Run the downloaded `project-hub-project-hub-local-server.exe` file
+2. Run the downloaded `project-hub-local-server.exe` file
 3. The server will start automatically on `http://localhost:1234`
 
 **Option 2: Run from Source**
 
 ```bash
-cd project-hub-project-hub-local-server
+cd project-hub-local-server
 npm install
 npm start
 ```
@@ -110,7 +110,7 @@ projecthub/
 │   ├── storage.ts         # Storage utilities (delegates to local-api)
 │   ├── local-api.ts       # Local server API client
 │   └── download-server.ts # Download server utility
-├── project-hub-project-hub-local-server/           # Local server (runs on user's PC)
+├── project-hub-local-server/           # Local server (runs on user's PC)
 │   ├── server.js          # Express server
 │   └── package.json
 └── package.json
